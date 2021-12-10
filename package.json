@@ -8,5 +8,8 @@
     },
     "devDependencies": {
         "dotenv": "10.0.0"
+    },
+    "scripts": {
+        "migrate": "truffle migrate --network celo"
     }
 }

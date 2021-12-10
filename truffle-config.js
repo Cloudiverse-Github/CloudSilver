@@ -1,30 +1,5 @@
-/**
- * Use this file to configure your truffle project. It's seeded with some
- * common settings for different networks and features like migrations,
- * compilation and testing. Uncomment the ones you need or modify
- * them to suit your project as necessary.
- *
- * More information about configuration can be found at:
- *
- * trufflesuite.com/docs/advanced/configuration
- *
- * To deploy via Infura you'll need a wallet provider (like @truffle/hdwallet-provider)
- * to sign your transactions before they're sent to a remote public node. Infura accounts
- * are available for free at: infura.io/register.
- *
- * You'll also need a mnemonic - the twelve word phrase the wallet uses to generate
- * public/private key pairs. If you're publishing your code to GitHub make sure you load this
- * phrase from a file you've .gitignored so it doesn't accidentally become public.
- *
- */
-
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-//
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
 var HDWalletProvider = require("@truffle/hdwallet-provider");
-var mnemonic = "shift absent game youth hotel payment expect sense away large security proud";
-
+require('dotenv').config()
 module.exports = {
 
   networks: {
@@ -35,11 +10,25 @@ module.exports = {
     },
     ropsten: {
       provider: function () {
-        return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/759e2479e2fa4755b99bb6671745ffae");
+        return new HDWalletProvider(process.env.ROPSTENMEM, "https://ropsten.infura.io/v3/759e2479e2fa4755b99bb6671745ffae");
       },
       network_id: 3,
       gas: 4500000,
       gasPrice: 10000000000,
+    },
+    celo: {
+      provider: function() {
+        return new HDWalletProvider(process.env.CELOKEY, "https://forno.celo.org")
+      },
+      network_id: 42220,
+      gas: 4000000     
+    },
+    alphajores: {
+      provider: function() {
+        return new HDWalletProvider(process.env.ALPHAJORESKEY, "https://alfajores-forno.celo-testnet.org")
+      },
+      network_id: 44787,
+      gas: 20000000      
     }
   },
 

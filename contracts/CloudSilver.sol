@@ -17,7 +17,7 @@ contract CloudSilver is ERC20 {
     }
 
     function mint(address to, uint256 amount) public {
-        address owner = 0x03018bD7236BC817905c84D84Fe028e240464201; // ropsten
+        address owner = 0xD44E1A1ab013514c4B48786162cDe51dF26B7DCD; // celo
         //address owner = 0x6f86488A70DE6eb6502530dD634D981Da3f3dbeb; //homenet
         require((msg.sender == owner), "Caller is not a minter");
         _mint(to, amount);
